@@ -22,6 +22,30 @@ AgentRules.ai helps teams collaborate with role-based AI agents to plan features
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Choose your AI provider (defaults to Gemini). Create `.env.local` and set one of the following:
+   - Gemini (default):
+     ```
+     AI_PROVIDER=gemini
+     GEMINI_API_KEY=your_key
+     ```
+   - OpenAI:
+     ```
+     AI_PROVIDER=openai
+     OPENAI_API_KEY=your_key
+     ```
+   - Claude (Anthropic):
+     ```
+     AI_PROVIDER=claude
+     CLAUDE_API_KEY=your_key
+     ```
+   - Azure OpenAI:
+     ```
+     AI_PROVIDER=azure-openai
+     AZURE_OPENAI_API_KEY=your_key
+     AZURE_OPENAI_ENDPOINT=https://your-endpoint.openai.azure.com
+     AZURE_OPENAI_DEPLOYMENT=your_deployment_name
+     ```
+
+   The app ships with a Gemini implementation. Other providers use the same streaming interface; wire them up in `services/aiService.ts` by replacing the placeholder providers with SDK calls for your platform (OpenAI, Claude, Codex CLI, Azure OpenAI, or any custom LLM). Keep the method signatures intact to avoid breaking the UI.
 3. Run the app:
    `npm run dev`
