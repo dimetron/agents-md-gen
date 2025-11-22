@@ -2,7 +2,7 @@
 
 ![UniGen Workstation](https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2000&auto=format&fit=crop)
 
-> **[Open in Google AI Studio](https://ai.studio/apps/drive/1uDMpHDhUhs-BNUsQTVDboz9twNfqeb61?fullscreenApplet=true)** to remix this project or use the live application.
+> **[Open Live Application](https://unigen-284596577332.us-west1.run.app/)**
 
 UniGen is a powerful web application for generating advanced context files for AI coding assistants, including Cursor (`.cursorrules`), GitHub Copilot, Claude Projects, and Autonomous Agents.
 
