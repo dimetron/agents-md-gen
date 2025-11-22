@@ -3,7 +3,6 @@ import Header from './components/Header';
 import GuideSection from './components/GuideSection';
 import Generator from './components/Generator';
 import References from './components/References';
-import MobileWarning from './components/MobileWarning';
 import { Linkedin } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -73,9 +72,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
-
-      {/* Mobile Optimization Warning */}
-      <MobileWarning />
     </div>
   );
 };
