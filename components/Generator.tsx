@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IdeType, TemplateType, AnalysisResponse, GeneratedFile } from '../types';
-import { generateRulesStream, analyzeContext } from '../services/geminiService';
+import { generateRulesStream, analyzeContext } from '../services/aiService';
 import { Copy, Check, Wand2, Loader2, AlertCircle, MessageSquare, ArrowRight, Code, FileCode, Sparkles, Cpu, Terminal, FileText, Cloud, Database, Server, Globe, Layout, Box, Layers } from 'lucide-react';
 
 const Generator: React.FC = () => {
