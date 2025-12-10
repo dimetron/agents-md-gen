@@ -22,33 +22,27 @@ const App: React.FC = () => {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="flex-grow relative z-10">
-        {activeTab === 'guide' && (
-          <div className="animate-fade-in">
-            <GuideSection />
-            {/* CTA */}
-            <div className="text-center pb-24 pt-12">
-              <button 
-                onClick={() => setActiveTab('generator')}
-                className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-primary px-8 font-medium text-white transition-all duration-300 hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg shadow-blue-500/25"
-              >
-                <span className="mr-2 relative z-10">Start Generating Rules</span>
-                <div className="absolute inset-0 -z-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-              </button>
-            </div>
+        <div className={`${activeTab === 'guide' ? 'animate-fade-in' : 'hidden'}`}>
+          <GuideSection />
+          {/* CTA */}
+          <div className="text-center pb-24 pt-12">
+            <button 
+              onClick={() => setActiveTab('generator')}
+              className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-primary px-8 font-medium text-white transition-all duration-300 hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg shadow-blue-500/25"
+            >
+              <span className="mr-2 relative z-10">Start Generating Rules</span>
+              <div className="absolute inset-0 -z-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+            </button>
           </div>
-        )}
+        </div>
         
-        {activeTab === 'generator' && (
-          <div className="animate-fade-in py-8">
-            <Generator />
-          </div>
-        )}
+        <div className={`${activeTab === 'generator' ? 'animate-fade-in py-8' : 'hidden'}`}>
+          <Generator />
+        </div>
 
-        {activeTab === 'references' && (
-          <div className="animate-fade-in">
-             <References />
-          </div>
-        )}
+        <div className={`${activeTab === 'references' ? 'animate-fade-in' : 'hidden'}`}>
+           <References />
+        </div>
       </main>
 
       <footer className="border-t border-slate-800/50 bg-[#0B1120]/80 backdrop-blur-xl py-12 relative z-10">

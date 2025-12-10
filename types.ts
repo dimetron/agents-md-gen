@@ -3,7 +3,7 @@ export enum IdeType {
   CURSOR = 'Cursor (.cursorrules)',
   COPILOT = 'GitHub Copilot (copilot-instructions.md)',
   AGENTS = 'Autonomous Agents (agents.md)',
-  CLAUDE = 'Claude Projects (project context)',
+  CLAUDE = 'Claude (Project Context & Skills)',
   CODEX = 'OpenAI Codex (System Prompt)'
 }
 

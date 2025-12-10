@@ -31,7 +31,7 @@ const getSystemPrompt = (ide: IdeType): string => {
     case IdeType.CODEX:
       return `${base} You specialize in OpenAI Codex and GPT-5 system prompts, focusing on strict token efficiency and code correctness.`;
     case IdeType.CLAUDE:
-      return `${base} You specialize in Anthropic Claude Projects (4.5 Sonnet), focusing on large context windows, artifacts, and architectural reasoning.`;
+      return `${base} You specialize in creating reusable, high-quality "Skills" for Anthropic Claude. You focus on creating structured knowledge, clear instructions, and robust examples, preferably using XML for maximum clarity.`;
     case IdeType.CURSOR:
       return `${base} You specialize in Cursor IDE (.cursorrules), optimizing for hybrid model usage (Claude 4.5 + GPT-5.1).`;
     case IdeType.COPILOT:
@@ -101,11 +101,10 @@ const constructPrompt = (request: GenerationRequest): string => {
          - Style: ${isJSON ? 'JSON' : 'Markdown'} (Copilot can parse JSON instructions if explicitly structured).
          - Focus on: Chat tone (terse/verbose), specific framework nuances not covered by linting.
 
-      4. claude-project-instructions.md (For Claude Projects)
-         - Style: ${isXML ? 'XML (Claude Native)' : isJSON ? 'JSON' : 'Markdown'}
-         - Focus on: "Project Knowledge" and "Custom Instructions".
-         - Instruct Claude to use Artifacts for major UI components or complex logic.
-         - Define the "Persona" as a Staff Engineer who prefers composition over inheritance and functional patterns.
+      4. claude_skill_instructions.xml (For creating a new Claude Skill)
+         - Style: Generate structured XML regardless of the user's main style selection, as it's best for Claude Skills.
+         - Structure: Use a root <skill> tag with a 'name' attribute. Inside, include <description>, <instructions> with nested <rule> tags, and <examples> with <code> blocks.
+         - Focus on: Creating a reusable, tool-like set of instructions that Claude can refer to across multiple conversations. Define a clear persona and coding patterns.
 
       5. codex_system_prompt.txt (For OpenAI Codex / generic LLM Context)
          - A concise System Prompt summarizing the stack, coding style, and constraints for use with raw LLM calls (CLI/Scripts).
@@ -122,6 +121,14 @@ const constructPrompt = (request: GenerationRequest): string => {
       - Enforce Thinking blocks.
       - Define MCP (Model Context Protocol) tool usage.
       Delimiter: --- START OF FILE: agents.md ---
+      `;
+  } else if (request.ide === IdeType.CLAUDE) {
+      prompt += `
+      \nGenerate instructions for a new Claude Skill.
+      - Style: Generate structured XML as it is the most effective format for Claude Skills.
+      - Structure: Use a root <skill name="..."> tag. Inside, include <description>, <instructions> with nested <rule> tags, and <examples> with <code> blocks.
+      - Focus: Create a self-contained, reusable skill that defines a specific persona, coding patterns, and project constraints.
+      Delimiter: --- START OF FILE: claude_skill_instructions.xml ---
       `;
   } else {
       prompt += `\nGenerate the specific configuration file for ${request.ide}. Ensure strict syntax and best practices.\nDelimiter: --- START OF FILE: output ---`;
